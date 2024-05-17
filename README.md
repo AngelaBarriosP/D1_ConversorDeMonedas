@@ -18,7 +18,6 @@ En este programa puedes:
 </ul>
 
 <h2>Tecnologías utilizadas:</h2>
-Java
-Exchange Rate API
+Java, Exchange Rate API
 
 Hecho por: Luz Angela Barrios Pulido
