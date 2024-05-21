@@ -29,6 +29,7 @@ public class MainConversor {
                 var opcionUnoUsuario = Integer.valueOf(lectura.nextLine());
 
                 if (opcionUnoUsuario == 7){
+                    System.out.println("¡Gracias por utilizar nuestros servicios!");
                     break;
                 }
 
@@ -39,6 +40,7 @@ public class MainConversor {
                 var opcionDosUsuario = Integer.valueOf(lectura.nextLine());
                 menu.MenuMonedas();
                 if (opcionDosUsuario == 7) {
+                    System.out.println("¡Gracias por utilizar nuestros servicios!");
                     break;
                 }
 
