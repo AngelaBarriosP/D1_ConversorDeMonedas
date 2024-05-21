@@ -1,8 +1,6 @@
 package com.alura.conversormonedas;
 
-import com.alura.conversormonedas.modelos.CalcularTasaDeCambio;
-import com.alura.conversormonedas.modelos.ConsultaMoneda;
-import com.alura.conversormonedas.modelos.MonedaBuscada;
+import com.alura.conversormonedas.modelos.*;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -13,53 +11,42 @@ public class MainConversor {
         ConsultaMoneda consultaMoneda = new ConsultaMoneda();
         Scanner lectura = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat("#.00");
+        Menu menu = new Menu();
+        ConversionSeleccionada conversion = new ConversionSeleccionada();
 
         try {
             while (true) {
                 String conversionElegida = "";
+                String monedaOrigen = "";
+                String monedaDestino = "";
+
                 System.out.println("""
                         *****************************************************
                         Sea bienvenido/a al Conversor de Moneda =]
-                        1)	Dólar =>> Peso argentino
-                        2)	Peso argentino =>> Dólar
-                        3)	Dólar =>> Real brasileño
-                        4)	Real brasileño =>> Dólar
-                        5)	Dólar =>> Peso colombiano
-                        6)	Peso colombiano =>> Dólar
-                        7)	Salir
-                        Elija una opción válida:
-                        *****************************************************
+                        Digite el número que corresponda con la moneda de origen:
                         """);
-                var opcionUsuario = Integer.valueOf(lectura.nextLine());
+                menu.MenuMonedas();
+                var opcionUnoUsuario = Integer.valueOf(lectura.nextLine());
 
-                switch (opcionUsuario) {
-                    case 1:
-                        conversionElegida = "USD/ARS";
-                        break;
-                    case 2:
-                        conversionElegida = "ARS/USD";
-                        break;
-                    case 3:
-                        conversionElegida = "USD/BRL";
-                        break;
-                    case 4:
-                        conversionElegida = "BRL/USD";
-                        break;
-                    case 5:
-                        conversionElegida = "USD/COP";
-                        break;
-                    case 6:
-                        conversionElegida = "COP/USD";
-                        break;
-                    case 7:
-                        System.out.println("¡Gracias por usar nuestros servicios!");
-                        break;
-                    default:
-                        break;
-                }
-                if (opcionUsuario == 7) {
+                if (opcionUnoUsuario == 7){
                     break;
                 }
+
+                System.out.println("""
+                        *****************************************************
+                        Ahora digite el número que corresponda con la moneda de destino para realizar la conversión:
+                        """);
+                var opcionDosUsuario = Integer.valueOf(lectura.nextLine());
+                menu.MenuMonedas();
+                if (opcionDosUsuario == 7) {
+                    break;
+                }
+
+                monedaOrigen = conversion.monedaSeleccionada(opcionUnoUsuario);
+                monedaDestino = conversion.monedaSeleccionada(opcionDosUsuario);
+
+                conversionElegida = monedaOrigen + "/" + monedaDestino;
+
                 MonedaBuscada monedaBuscada = consultaMoneda.buscaMoneda(conversionElegida);
                 //System.out.println(monedaBuscada);
                 System.out.println("Ingrese el valor que desea convertir:");
