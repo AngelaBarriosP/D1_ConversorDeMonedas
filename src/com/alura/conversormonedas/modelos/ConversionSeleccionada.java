@@ -24,6 +24,7 @@ public class ConversionSeleccionada {
                 monedaElegida = "USD";
                 break;
             default:
+                System.out.println("¡Gracias por utilizar nuestros servicios!");
                 break;
         }
         return monedaElegida;
